@@ -1,0 +1,60 @@
+<br>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card mx-4" style="background-color: rgba(12, 59, 39, 0.5);">
+        <div class="card-body p-4">
+          <form #myfrm="ngForm" style="color:white; border: 2px solid;
+              padding: 20px;
+              box-shadow: 5px 10px 18px #888888;">
+            <div class="form-group row">
+              <label class="col-sm-4 col-form-label">Package Name:</label>
+              <div class="col-sm-8">
+                <input type="text" #pckname="ngModel" [(ngModel)]="epckg.pckName" name="pckname" class="form-control"
+                  required>
+                <span *ngIf="pckname.errors && (pckname.touched || pckname.dirty)" style="color:red">
+                  <span [hidden]="!pckname.errors.required">packname Required ..</span>
+                </span>
+              </div>
+            </div> 
+  <div class="form-group row">
+              <label class="col-sm-4 col-form-label">Duration:</label>
+              <div class="col-sm-8">
+                <input type="number" #pckduration="ngModel" [(ngModel)]="epckg.pckDuration" name="pckduration" class="form-control"
+                  required>
+                <span *ngIf="pckduration.errors && (pckduration.touched || pckduration.dirty)" style="color:red">
+                  <span [hidden]="!pckduration.errors.required">rewards duration ..</span>
+                </span>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-sm-4 col-form-label">Price:</label>
+              <div class="col-sm-8">
+                <input type="number" #pckPrice="ngModel" [(ngModel)]="epckg.pckPrice" name="pckPrice" class="form-control"
+                  required>
+                <span *ngIf="pckPrice.errors && (pckPrice.touched || pckPrice.dirty)" style="color:red">
+                  <span [hidden]="!pckPrice.errors.required">price Required ..</span>
+                </span>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-sm-4 col-form-label">Description:</label>
+              <div class="col-sm-8">
+                <input type="text" #pckDescription="ngModel" [(ngModel)]="epckg.pckDescription" name="pckDescription" class="form-control"
+                  required>
+                <span *ngIf="pckDescription.errors && (pckDescription.touched || pckDescription.dirty)" style="color:red">
+                  <span [hidden]="!pckDescription.errors.required">description Required ..</span>
+                </span>
+              </div>
+            </div>
+            <div class="form-group" align="center">
+              <button (click)="btneditpckg()" class="btn btn-info" style="width:45%">update</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

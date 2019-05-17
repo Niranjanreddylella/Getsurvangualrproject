@@ -1,0 +1,43 @@
+<br>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <!-- <div class="card mx-4">
+          <div class="card-body p-4"> -->
+            <form #myfrm="ngForm" style=" border: 1px solid #888888 ;
+            padding: 20px;
+            box-shadow: 5px 10px 18px #888888;">
+              <h4 align="center">Admin</h4>
+               <div class="form-group">
+                  User Name: 
+                  <input type="text" #username="ngModel" [(ngModel)]="login.username" placeholder="Enter Username" name="username" class="form-control" required />
+                  <span *ngIf="username.errors && (username.touched || username.dirty)" style="color: red">
+                    <span [hidden]="!username.errors.required"> Enter User Name </span>
+                  </span>
+                </div>
+                <div class="form-group">
+                    Password: 
+                    <input type="Password" #password="ngModel" [(ngModel)]="login.password" placeholder="Enter Password" name="password" class="form-control" required />
+                    <span *ngIf="password.errors && (password.touched || password.dirty)" style="color: red">
+                      <span [hidden]="!password.errors.required"> Enter Password </span>
+                    </span>
+                  </div>
+                  <div class="form-group" align="center">
+                      <input type="submit" class="btn btn-info" (click)="loginform(username,password,myfrm)" value="Login" style="width: 45%">
+                    </div>
+            </form>
+          <!-- </div>
+
+        </div> -->
+      </div>
+    </div>
+  </div>
+</body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

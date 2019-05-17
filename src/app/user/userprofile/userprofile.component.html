@@ -1,0 +1,14 @@
+<div class="hvrbox" align="center">
+  <label class="newbtn">
+    <img *ngIf="showImage==true" [src]="im" class="rounded-circle" style="height:200px; width:200px" alt="User Image">
+    <img *ngIf="showImage==false" class="rounded-circle" src="http://localhost:4500/{{details.userId}}.png" alt="User Image" style="height:200px; width:200px">
+    <input id="pic" *ngIf="change==true" type="file" name="image" ngModel #image="ngModel" (change)="img($event)">
+    <div class="hvrbox-layer_top">
+      <div class="hvrbox-text">
+        <i (click)="btnChangeImage()" class="fa fa-camera fa-1.8px">
+          <b>Edit</b>
+        </i>
+      </div>
+    </div>
+  </label>
+</div>

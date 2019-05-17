@@ -1,0 +1,67 @@
+<div>
+  <h3 style="float:left">Predefined</h3>
+  <button style="float:right" (click)="btnAddQuestions()">Done</button>
+</div>
+<br>
+<br>
+<div class="row">
+  <div class="col-sm-6" style="overflow:scroll;height: 400px">
+      <ul class="list-group">
+          <li draggable *ngFor="let qd of adminQues" [dragData]="qd" class="list-group-item">
+              <div>
+                  <div *ngIf="qd.modelid==8">
+                      <app-multi [ansTemp]="qd"></app-multi>
+                  </div>
+                  <div *ngIf="qd.modelid==7">
+                      <app-multi-select [ansTemp]="qd"></app-multi-select>
+                  </div>
+                  <div *ngIf="qd.modelid==9">
+                      <app-dropdown [ansTemp]="qd"></app-dropdown>
+                  </div>
+                  <div *ngIf="qd.modelid==12">
+                      <app-rating [ansTemp]="qd"></app-rating>
+                  </div>
+                  <div *ngIf="qd.modelid==11">
+                      <app-textfield [ansTemp]="qd"></app-textfield>
+                  </div>
+                  <div *ngIf="qd.modelid==10">
+                      <app-yes-no [ansTemp]="qd"></app-yes-no>
+                  </div>
+              </div>
+          </li>
+      </ul>
+  </div>
+  <div class="col-sm-6">
+      <div class="panel panel-default" style="height:400px" droppable (onDrop)="onItemDrop($event)">
+          <div *ngIf="!view" align="center"  class="panel-heading"><h3>Drop Items here</h3></div>
+          <div class="panel-body">
+              <li *ngFor="let qd of droppedItems" class="list-group-item">
+                  <div>
+                      <div style="float:right">
+                          <button (click)="removeDetails(qd)">x</button>
+                      </div>
+                      <div *ngIf="qd.modelid==8">
+                          <app-multi [ansTemp]="qd"></app-multi>
+                      </div>
+                      <div *ngIf="qd.modelid==7">
+                          <app-multi-select [ansTemp]="qd"></app-multi-select>
+                      </div>
+                      <div *ngIf="qd.modelid==9">
+                          <app-dropdown [ansTemp]="qd"></app-dropdown>
+                      </div>
+                      <div *ngIf="qd.modelid==12">
+                          <app-rating [ansTemp]="qd"></app-rating>
+                      </div>
+                      <div *ngIf="qd.modelid==11">
+                          <app-textfield [ansTemp]="qd"></app-textfield>
+                      </div>
+                      <div *ngIf="qd.modelid==10">
+                          <app-yes-no [ansTemp]="qd"></app-yes-no>
+                      </div>
+
+                  </div>
+              </li>
+          </div>
+      </div>
+  </div>
+</div>

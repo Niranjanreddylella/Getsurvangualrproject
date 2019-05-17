@@ -1,0 +1,11 @@
+<div class="container">
+  {{ansTemp.question}}
+  <br>
+  <form #myFrm="ngForm">
+  <div *ngFor="let od of ansTemp.optiondescription">
+    <div>
+      <input type="checkbox" name="options" value="{{od.f1}}" #options (click)='multiSelect(options.value,ansTemp.questionid,od.f2)'> {{od.f1}}
+    </div>
+  </div>
+</form>
+</div>

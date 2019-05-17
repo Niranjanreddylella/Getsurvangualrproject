@@ -1,0 +1,45 @@
+<section class="cards">
+  <article class="card card--1">
+    <div class="card__info-hover">
+    </div>
+    <div class="card__img"></div>
+    <a href="premiumredirect" class="card_link">
+      <div class="card__img--hover"></div>
+    </a>
+    <div class="card__info">
+      <!-- <span class="card__category"></span> -->
+      <h4 class="card__title"> {{pck.pckname}} </h4>
+      <h5 class="card__title"> {{pck.pckduration}} </h5>
+      <h6 class="card__title"> Rs. {{pck.pckprice}} /- </h6>
+      <ul>
+        <li> {{pck.pckdescription}} </li>
+      </ul>
+      <button (click)="btnOffers(pck.pckid)">offers</button>
+      <div *ngFor="let off of offers">
+        <div (click)="btnSubscribe(off.offerid,pck.pckduration,pck.pckid)" data-toggle="modal" data-target="#myModal" style=" border: 1px solid #888888 ;
+        padding: 20px;width: 150px">
+          {{off.offername | uppercase}}
+          <br> discount : {{off.discount}}
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Choose Date</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        Select Starting Date:
+        <input type="date" #dat>
+        <button data-dismiss="modal" class="btn btn-success" (click)="addPackage(dat.value)">Subscribe</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">close</button>
+      </div>
+    </div>
+  </div>
+</div>

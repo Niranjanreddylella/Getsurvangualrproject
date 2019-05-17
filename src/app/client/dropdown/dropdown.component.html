@@ -1,0 +1,12 @@
+<div class="container">
+  <form #myFrm="ngForm">
+    {{ansTemp.question}}
+    <br>
+    <select #ans name="{{ansTemp.questionid}}" class="form-control"
+    (change)='dropdown(ans.value,ansTemp.questionid)'>
+    <option> Select</option>
+      <option *ngFor="let od of ansTemp.optiondescription">{{od.f1}}</option>
+    </select>
+  </form>
+</div>
+

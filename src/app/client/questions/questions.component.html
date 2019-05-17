@@ -1,0 +1,65 @@
+<div class="container">
+  <div>
+    <table>
+      <tr>
+        <td *ngFor="let qt of questiontype">
+          <button style=" margin-top:20px; width: 120px" (click)="btnQuesModel(qt)">
+            <!-- <img src="{{qt.icon}}" width="24" height="24"> -->
+            {{qt.modeltype}}</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div style="min-height:350px;margin-right: 70px; border: solid 2px ; border-color:grey ;margin-top:10px">
+    <div *ngIf="!questSelect && !predefined">
+      <h5 style="text-align:center">
+        <b>Select the Question Type from the Above...</b>
+      </h5>
+    </div>
+    <div style="margin-right:10px;margin-left:10px" *ngIf="questSelect">
+      <app-question [qtype]="qtypObj" [surid]="sid" *ngIf="showChild" (data)="btnadd($event)" (close)="showChild=false;questSelect=false">
+      </app-question>
+    </div>
+    <div style="margin-right:10px;margin-left:10px" *ngIf="predefined">
+      <app-predefined [surid]="sid" (preData)="btnadd($event)"></app-predefined>
+    </div>
+  </div>
+  <div>
+    <button style="float:left" (click)="preBtn()">Predefined Questionaries</button>
+    <p style="float:right;margin-right:60px">Questions added :{{count}} of 30</p>
+  </div>
+
+  <br>
+  <br>
+  <br>
+
+  <div *ngFor="let qd of quesData ">
+    <div style="min-height:60px" *ngIf="qd.modelid==8">
+      <mat-icon style="float: right" (click)="btnDelques(qd.questionid)">clear</mat-icon>
+      <!-- <button (click)="btnQuesEdit(qd.modelid)" style="float: right;margin-right: 20px">Edit</button> -->
+      <app-multi [ansTemp]="qd"></app-multi>
+      <!-- <app-question [qtype]="qtypObj" [surid]="sid" *ngIf="showEdit" ></app-question> -->
+    </div>
+    <div style="min-height:60px" *ngIf="qd.modelid==7">
+      <mat-icon style="float: right" (click)="btnDelques(qd.questionid)">clear</mat-icon>
+      <app-multi-select [ansTemp]="qd"></app-multi-select>
+    </div>
+    <div style="min-height:60px" *ngIf="qd.modelid==9">
+      <mat-icon style="float: right" (click)="btnDelques(qd.questionid)">clear</mat-icon>
+      <app-dropdown [ansTemp]="qd"></app-dropdown>
+    </div>
+    <div style="min-height:60px" *ngIf="qd.modelid==12">
+      <mat-icon style="float: right" (click)="btnDelques(qd.questionid)">clear</mat-icon>
+      <app-rating [ansTemp]="qd"></app-rating>
+    </div>
+    <div style="min-height:60px" *ngIf="qd.modelid==11">
+      <mat-icon style="float: right" (click)="btnDelques(qd.questionid)">clear</mat-icon>
+      <app-textfield [ansTemp]="qd"></app-textfield>
+    </div>
+    <div style="min-height:60px" *ngIf="qd.modelid==10">
+      <mat-icon style="float: right" (click)="btnDelques(qd.questionid)">clear</mat-icon>
+      <app-yes-no [ansTemp]="qd"></app-yes-no>
+    </div>
+  </div>
+
+</div>

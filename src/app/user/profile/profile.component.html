@@ -1,0 +1,228 @@
+<br>
+<div class="container main-secction">
+  <div class="row">
+    <div class="row user-left-part">
+      <div class="col-md-3 col-sm-3 col-xs-12 user-profil-part pull-left">
+        <div class="row ">
+          <div class="col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center">
+            <app-userprofile></app-userprofile>
+          </div>
+          <br>
+          <div class="row user-detail-row">
+            <div class="col-md-12 col-sm-12 user-detail-section2 pull-left">
+              <div class="border"></div>
+              Reward Points :
+              <br>
+              <b style="font-size: 100px;opacity: 0.5">{{surveydetails.rewards}} </b>
+              <br> No Of Surveys Done:
+              <br>
+              <b style="font-size: 100px;opacity: 0.5">{{surveycount.surveycou}} </b>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section">
+        <div class="row profile-right-section-row">
+          <div class="col-md-12 profile-header">
+            <div class="row">
+              <div class="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left">
+                <h1> {{details.firstName | uppercase}} {{details.lastName | uppercase}}</h1>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-10">
+                <ul class="nav " role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#profile" role="tab" data-toggle="tab">
+                      Profile Details
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#buzz" role="tab" data-toggle="tab">
+                      Change Password</a>
+                  </li>
+                </ul>
+                <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane fade show active" id="profile">
+                    <form #myFrm="ngForm">
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label>
+                            <b> User ID</b>
+                          </label>
+                        </div>
+                        <div class="col-md-5">
+                          <p>{{details.userId}}</p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label>
+                            <b> Name</b>
+                          </label>
+                        </div>
+                        <div class="col-md-5">
+                          <p>{{details.firstName}} {{details.lastName}}</p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label>
+                            <b>Gender</b>
+                          </label>
+                        </div>
+                        <div class="col-md-5">
+                          <p>{{details.gender}}</p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label>
+                            <b>Email</b>
+                          </label>
+                        </div>
+                        <div *ngIf="!edit" class="col-md-5">
+                          <p>{{details.emailId}}</p>
+                        </div>
+                        <div *ngIf="edit" class="col-md-5">
+                          <mat-form-field class="example-full-width">
+                            <input matInput #emailId="ngModel" [(ngModel)]="details.emailId" name="emailId">
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label>
+                            <b>Phone</b>
+                          </label>
+                        </div>
+                        <div *ngIf="!edit" class="col-md-5">
+                          <p>{{details.mobileNo}}</p>
+                        </div>
+                        <div *ngIf="edit" class="col-md-5">
+                          <mat-form-field class="example-full-width">
+                            <input matInput #mobileNo="ngModel" [(ngModel)]="details.mobileNo" name="mobileNo">
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label>
+                            <b>Address</b>
+                          </label>
+                        </div>
+                        <div *ngIf="!edit" class="col-md-5">
+                          <p>{{details.address}}</p>
+                        </div>
+                        <div *ngIf="edit" class="col-md-5">
+                          <mat-form-field class="example-full-width">
+                            <input matInput #address="ngModel" [(ngModel)]="details.address" name="address">
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label>
+                            <b>Country</b>
+                          </label>
+                        </div>
+                        <div *ngIf="!edit" class="col-md-5">
+                          <p>{{name.country}}</p>
+                        </div>
+                        <div *ngIf="edit" class="col-md-5">
+                          <mat-form-field class="example-full-width">
+                            <mat-select placeholder="{{name.country}}" #country="ngModel" [(ngModel)]="name.country" (change)="getStates(country.value)"
+                              name="country">
+                              <mat-option *ngFor="let ucl of co" value="{{ucl.id}}">
+                                {{ucl.name}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label>
+                            <b>State</b>
+                          </label>
+                        </div>
+                        <div *ngIf="!edit" class="col-md-5">
+                          <p>{{name.state}}</p>
+                        </div>
+                        <div *ngIf="edit" class="col-md-5">
+                          <mat-form-field class="example-full-width">
+                            <mat-select placeholder="{{name.state}}" #state="ngModel" [(ngModel)]="name.state" (change)="getCity(state.value)" name="state">
+                              <mat-option *ngFor="let ucl of s" value="{{ucl.id}}">
+                                {{ucl.nme}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label>
+                            <b>City</b>
+                          </label>
+                        </div>
+                        <div *ngIf="!edit" class="col-md-5">
+                          <p>{{name.city}}</p>
+                        </div>
+                        <div *ngIf="edit" class="col-md-5">
+                          <mat-form-field class="example-full-width">
+                            <mat-select placeholder="{{name.city}}" #city="ngModel" [(ngModel)]="name.city" name="city">
+                              <mat-option *ngFor="let ucl of c" value="{{ucl.id}}">
+                                {{ucl.city}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label>
+                            <b>ZipCode</b>
+                          </label>
+                        </div>
+                        <div *ngIf="!edit" class="col-md-5">
+                          <p>{{details.zipCode}}</p>
+                        </div>
+                        <div *ngIf="edit" class="col-md-5">
+                          <mat-form-field class="example-full-width">
+                            <input matInput #zipCode="ngModel" [(ngModel)]="details.zipCode" name="zipCode">
+                          </mat-form-field>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label>
+                            <b>Type Of User</b>
+                          </label>
+                        </div>
+                        <div class="col-md-5">
+                          <p>{{details.typeOfUser}}</p>
+                        </div>
+                      </div>
+                    </form>
+                    <div style="margin-left: 150px" class="col-md-5">
+                      <button *ngIf="!edit || !save" (click)="editProfile()">EDIT</button>
+                      <button *ngIf="edit || save" (click)="updateProfile(myFrm)">SAVE</button>
+                    </div>
+
+                  </div>
+                  <div role="tabpanel" style="margin-top: 20px" class="tab-pane fade" id="buzz">
+                    <app-changepassword></app-changepassword>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

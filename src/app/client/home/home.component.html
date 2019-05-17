@@ -1,0 +1,67 @@
+<br>
+
+<h2 align="center">MY SURVEYS LIST</h2>
+<br>
+<div class="container" style="height: 600px">
+
+  <div class="card-columns">
+    <div *ngFor="let su of survey | orderBy: key : reverse  | paginate: { itemsPerPage: 6, currentPage: p };  ">
+      <div class="hvrbox">
+        <label class="newbtn">
+          <div class="card" style="width:230px;height: 260px">
+            <img class="card-img-top" src="http://localhost:4500/{{su.surveyid}}.png" height="260px" alt="Card image">
+
+            <input id="pic" type="file" (change)="img($event,su.surveyid)">
+            <div class="hvrbox-text">
+              <i class="fa fa-camera fa-1.8px"></i>
+            </div>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">Title : {{su.surveyname}}</h4>
+            <p>
+              <br>Survey Id : {{su.surveyid}}
+              <br>Status : {{su.status}}
+              <br>Rewards : {{su.reward}}
+            </p>
+            <div align="center">
+              <button (click)="addQuestions(su.surveyid)" class="btn btn-primary">Questions</button>
+              <button (click)="addPackage(su.surveyid)" class="btn btn-primary">Package</button>
+            </div>
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+  <pagination-controls (pageChange)="p = $event" maxSize="9"></pagination-controls>
+
+</div>
+
+
+
+
+
+<!-- <h2 align="center">MY SURVEYS LIST</h2>
+<br>
+<div class="container" style="height: 600px">
+  <div class="card-columns">
+    <div *ngFor="let su of survey | orderBy: key : reverse  | paginate: { itemsPerPage: 3, currentPage: p };  ">
+      <div class="card" style="width:300px">
+        <img class="card-img-top" src="http://localhost:4500/{{su.surveyid}}.png" height="300px" alt="Card image">
+        <div class="card-body">
+          <h4 class="card-title">Title : {{su.surveyname}}</h4>
+          <p>
+            <br>Survey Id : {{su.surveyid}}
+            <br>Status : {{su.status}}
+            <br>Rewards : {{su.reward}}
+            <br>No Of Users: {{su.count}}
+          </p>
+          <div align="center">
+            <button (click)="addQuestions(su.surveyid)" class="btn btn-primary">Add Questions</button>
+            <button (click)="addPackage(su.surveyid)" class="btn btn-primary">Add Package</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <pagination-controls (pageChange)="p = $event" maxSize="9"></pagination-controls>
+</div> -->

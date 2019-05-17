@@ -1,0 +1,22 @@
+.details {
+    float: left;
+    width: 300px;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.column {
+    float: left;
+    width: 700px;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+}
+.count {
+    float: left;
+    width: 250px;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+}
+.symbol{
+    color:green
+}

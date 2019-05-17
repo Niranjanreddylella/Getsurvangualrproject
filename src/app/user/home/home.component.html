@@ -1,0 +1,47 @@
+<br>
+<div class="container">
+  <div class="row pb-4 text-center">
+    <div class="col-md-12">
+      <h2 class="text-danger"> Survey Categories</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center ">
+      <nav class="nav-justified ">
+        <div class="nav nav-tabs " id="nav-tab" role="tablist">
+          <a class="nav-item nav-link active" (click)="trend()" id="pop1-tab" data-toggle="tab" href="#pop1" role="tab"
+            aria-controls="pop1" aria-selected="true">Trending Surveys</a>
+          <a class="nav-item nav-link" (click)="ongoing()" id="pop2-tab" data-toggle="tab" href="#pop2" role="tab"
+            aria-controls="pop2" aria-selected="false">Ongoing Surveys</a>
+          <a class="nav-item nav-link" (click)="upcoming()" id="pop3-tab" data-toggle="tab" href="#pop3" role="tab"
+            aria-controls="pop3" aria-selected="false">Upcoming Surveys</a>
+          <a class="nav-item nav-link" (click)="completed()" id="pop4-tab" data-toggle="tab" href="#pop4" role="tab"
+            aria-controls="pop4" aria-selected="false">Completed Surveys</a>
+        </div>
+      </nav> <br>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="pop1" role="tabpanel" aria-labelledby="pop1-tab">
+          <div class="container" style="height: 600px">
+            <div class="card-columns" >
+              <div *ngFor="let ts of test | orderBy: key : reverse  | paginate: { itemsPerPage: 6, currentPage: p }; " id="border">
+                <div class="card" style="width: 300px; background-color: snow"> 
+                  <img class="card-img-top" src="http://localhost:4500/{{ts.surveyid}}.png" height="300px" alt="Card image">
+                  <div class="card-body">
+                    <h4 class="card-title">Title : {{ts.surveyname}}</h4>
+                    <p>Start Date: {{ts.startingdate | date}} </p>
+                    <p [hidden]='name'>Total Reviews : {{ts.users}} </p>
+                    <p>Rewards :{{ts.rewards}} </p>
+                  </div>
+                  <div class="card-footer" align="center" [hidden]='buton'>
+                    <input type="button" class="btn btn-primary" (click)="startSurvey(ts.surveyid)" value="Start Survey">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div>

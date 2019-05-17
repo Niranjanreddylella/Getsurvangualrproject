@@ -1,0 +1,532 @@
+<!-- <div class="container">
+  <div class="title">
+    <header>
+      <h1>REGISTER INTO GETSURV</h1>
+    </header>
+  </div>
+  <div class="login-signup">
+    <div class="row">
+      <div class="col-sm-6 nav-tab-holder">
+        <ul class="nav nav-tabs row" role="tablist">
+          <li role="presentation" class="active col-sm-6">
+            <a href="#home" *ngIf="on==='true'" aria-controls="home" role="tab" data-toggle="tab">USER</a>
+          </li>
+          <li role="presentation" class="col-sm-6">
+            <a href="#profile" *ngIf="on==='true'" aria-controls="profile" role="tab" data-toggle="tab">CLIENT</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="home">
+        <div class="row">
+          <div class="col-sm-6 mobile-pull">
+            <article role="login">
+              <h3 class="text-center">
+                <i class="fa fa-lock"></i> Create USER Account</h3>
+
+              <form class="signup" #myfrm="ngForm" action="index.html" method="post">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    First Name
+                    <input type="text" #firstName="ngModel" [(ngModel)]="regis.firstName" name="firstName" class="form-control"
+                      required>
+                    <span *ngIf="firstName.errors && (firstName.touched || firstName.dirty)" style="color:red">
+                      <span [hidden]="!firstName.errors.required">First name Required </span>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    Last Name
+                    <input type="text" #lastName="ngModel" [(ngModel)]="regis.lastName" name="lastName" class="form-control"
+                      required>
+                    <span *ngIf="lastName.errors && (lastName.touched || lastName.dirty)" style="color:red">
+                      <span [hidden]="!lastName.errors.required">Last Name Required ..</span>
+                    </span>
+                  </div>
+                </div>
+                <br>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    Email Id
+                    <input type="text" #emailId="ngModel" [(ngModel)]="regis.emailId" name="emailId" class="form-control"
+                      required pattern="^[A-Za-z0-9.]{4,25}@[A-Za-z]{3,7}.[A-Za-z]{2,4}$">
+                    <span *ngIf="emailId.errors && (emailId.touched || emailId.dirty)" style="color:red">
+                      <span [hidden]="!emailId.errors.required">Mailid Required ..</span>
+                      <span [hidden]="!emailId.errors.pattern">please enter valid emailId ..</span>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    Mobile Number
+                    <input type="text" #mobileNo="ngModel" [(ngModel)]="regis.mobileNo" name="mobileNo" class="form-control"
+                      required pattern="^[6-9]{1}[0-9]{9}$">
+                    <span *ngIf="mobileNo.errors && (mobileNo.touched || mobileNo.dirty)" style="color:red">
+                      <span [hidden]="!mobileNo.errors.required">mobile Required ..</span>
+                      <span [hidden]="!mobileNo.errors.pattern">Min 10 Digits ..</span>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    Password
+                    <input type="password" #password="ngModel" [(ngModel)]="regis.password" name="password" class="form-control"
+                      required>
+                    <span *ngIf="password.errors && (password.touched || password.dirty)" style="color:red">
+                      <span [hidden]="!password.errors.required">Password Required ..</span>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    Confirm Password
+                    <input type="password" #cpwd="ngModel" name="cpwd" [(ngModel)]="regis.cpwd" class="form-control" required>
+                    <span *ngIf="password.value!=cpwd.value && cpwd.touched" style="color:red">
+                      <span [hidden]="password.value==cpwd.value"> Password Mismatch </span>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    Gender
+                  </div>
+                  <div>
+                    <label class="radio inline">
+                      <input type="radio" #gender="ngModel" [(ngModel)]="regis.gender" name="gender" value="male" required>male &nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="radio" #gender="ngModel" [(ngModel)]="regis.gender" name="gender" value="female" required>female
+                    </label>
+                    <span *ngIf="gender.errors && (gender.touched || gender.dirty)" style="color:red">
+                      <span [hidden]="!gender.errors.required">Gender Required ..</span>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  Country
+                  <div class="form-group">
+                    <select class="form-control" required #country="ngModel" [(ngModel)]="regis.country" (change)="getStates(country.value)"
+                      name="country">
+                      <option>Select</option>
+                      <option *ngFor="let ucl of co" value="{{ucl.id}}">{{ucl.name}}</option>
+                    </select>
+                    <span *ngIf="country.errors&&(country.touched||country.dirty)" style="color: red">
+                      <span [hidden]=!errors.country.required>Enter Country...</span>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    State
+                    <select class="form-control" required #state="ngModel" [(ngModel)]="regis.state" (change)="getCity(state.value)"
+                      name="state">
+                      <option>Select</option>
+                      <option *ngFor="let ucl of s" value="{{ucl.id}}">{{ucl.nme}} </option>
+                    </select>
+                    <span *ngIf="state.errors&&(state.touched||state.dirty)" style="color: red">
+                      <span [hidden]=!errors.state.required>Enter State...</span>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  City
+                  <div class="form-group">
+                    <select class="form-control" required #city="ngModel" [(ngModel)]="regis.city" name="city">
+                      <option>Select</option>
+                      <option *ngFor="let ucl of c" value="{{ucl.id}}">{{ucl.city}}</option>
+                    </select>
+                    <span *ngIf="city.errors&&(city.touched||city.dirty)" style="color: red">
+                      <span [hidden]=!errors.city.required>Enter City...</span>
+                    </span>
+                  </div>
+                </div>
+               
+                <div class="col-md-6">
+                  <div class="form-group">
+                    Address
+                    <textarea name="message" cols="15" rows="5" #address="ngModel" [(ngModel)]="regis.address" name="address"
+                      class="form-control" required></textarea>
+                    <span *ngIf="address.errors && (address.touched || address.dirty)" style="color:red">
+                      <span [hidden]="!address.errors.required">Address Required ..</span>
+                    </span>
+                  </div>
+                </div>
+                <div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      ZipCode
+                      <input type="text" #zipCode="ngModel" [(ngModel)]="regis.zipCode" name="zipCode" class="form-control" required>
+                      <span *ngIf="zipCode.errors && (zipCode.touched || zipCode.dirty)" style="color:red">
+                        <span [hidden]="!zipCode.errors.required">Zip Code Required </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+
+
+                <div class="text-center">
+                  <button (click)="btnuser(myfrm)" class="btn btn-primary  btn-wd btn-lg">continue as user</button>
+                </div>
+                <div class="text-center">
+                  <ul class="nav nav-tabs row" role="tablist">
+                    <li role="presentation" class="col-sm-6">
+                      <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">register as client</a>
+                    </li>
+                  </ul>
+                </div>
+
+              </form>
+
+            </article>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div role="tabpanel" class="tab-pane" id="profile">
+        <div class="row">
+          <div class="col-sm-6 mobile-pull">
+            <article role="login">
+              <h3 class="text-center">
+                <i class="fa fa-lock"></i> Create CLIENT Account</h3>
+              <form class="signup" #myfrm1="ngForm" action="index.html" method="post">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    Firm Name
+                    <input type="text" #firmName="ngModel" [(ngModel)]="regis.firmName" name="firmName" class="form-control"
+                      required>
+                    <span *ngIf="firmName.errors && (firmName.touched || firmName.dirty)" style="color:red">
+                      <span [hidden]="!firmName.errors.required">First name Required </span>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    established year
+                    <input type="date" #establishedYear="ngModel" [(ngModel)]="regis.establishedYear" name="establishedYear"
+                      class="form-control" required>
+                    <span *ngIf="establishedYear.errors && (establishedYear.touched || establishedYear.dirty)" style="color:red">
+                      <span [hidden]="!establishedYear.errors.required">Established Year Required ..</span>
+                    </span>
+                  </div>
+                </div>
+                <br>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    description
+                    <input type="text" #description="ngModel" [(ngModel)]="regis.description" name="description"
+                      class="form-control" required>
+                    <span *ngIf="description.errors && (description.touched || description.dirty)" style="color:red">
+                      <span [hidden]="!description.errors.required">description Required ..</span>
+                      <span [hidden]="!description.errors.pattern">please enter description ..</span>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    parent firm
+                    <input type="text" #parentFirm="ngModel" [(ngModel)]="regis.parentFirm" name="parentFirm"
+                      class="form-control" required>
+                    <span *ngIf="parentFirm.errors && (parentFirm.touched || parentFirm.dirty)" style="color:red">
+                      <span [hidden]="!parentFirm.errors.required">parent firm name Required </span>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  Country
+                  <div class="form-group">
+                    <select class="form-control" required #fcountry="ngModel" [(ngModel)]="regis.fcountry" (change)="getStates(country1.value)"
+                      name="fcountry">
+                      <option>Select</option>
+                      <option *ngFor="let ucl of co" value="{{ucl.id}}">{{ucl.name}}</option>
+                    </select>
+                    <span *ngIf="fcountry.errors&&(fcountry.touched||fcountry.dirty)" style="color: red">
+                      <span [hidden]=!errors.fcountry.required>Enter Country...</span>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    State
+                    <select class="form-control" required #fstate="ngModel" [(ngModel)]="regis.fstate" (change)="getCity(state.value)"
+                      name="fstate">
+                      <option>Select</option>
+                      <option *ngFor="let ucl of s" value="{{ucl.id}}">{{ucl.nme}} </option>
+                    </select>
+                    <span *ngIf="fstate.errors&&(fstate.touched||fstate.dirty)" style="color: red">
+                      <span [hidden]=!errors.fstate.required>Enter State...</span>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  City
+                  <div class="form-group">
+                    <select class="form-control" required #fcity="ngModel" [(ngModel)]="regis.fcity" name="fcity">
+                      <option>Select</option>
+                      <option *ngFor="let ucl of c" value="{{ucl.id}}">{{ucl.city}}</option>
+                    </select>
+                    <span *ngIf="fcity.errors&&(fcity.touched||fcity.dirty)" style="color: red">
+                      <span [hidden]=!errors.fcity.required>Enter City...</span>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  address
+                  <div class="form-group">
+                    <input type="text" #faddress="ngModel" [(ngModel)]="regis.faddress" name="faddress" class="form-control" required>
+                    <span *ngIf="faddress.errors && (faddress.touched || faddress.dirty)" style="color:red">
+                      <span [hidden]="!faddress.errors.required">Address Required ..</span>
+                    </span>
+                  </div>
+
+                </div>
+                <div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      ZipCode
+                      <input type="text" #fzipCode="ngModel" [(ngModel)]="regis.fzipCode" name="fzipCode" class="form-control" required>
+                      <span *ngIf="fzipCode.errors && (fzipCode.touched || fzipCode.dirty)" style="color:red">
+                        <span [hidden]="!fzipCode.errors.required">Zip Code Required </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="checkbox">
+                  </div>
+                </div>
+              </form>
+
+
+              <div class="text-center">
+                <button data-dismiss="modal" (click)="btnclient(myfrm1)" class="btn btn-primary  btn-wd btn-lg">continue as client</button>
+              </div>
+              <br>
+
+
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+<div style="margin-left:150px" class="col-xs-12 col-sm-8 col-sm-offset-2">
+  <form #regFrm="ngForm">
+    <h4 align="center">Create a FREE account.</h4>
+    <p align="center">Already have an account?
+      <a href=""> LogIn </a>
+    </p>
+
+    <hr align="center" class="colorgraph">
+
+    <mat-horizontal-stepper labelPosition="bottom" #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+
+        <ng-template matStepLabel>Fill Out your Name.</ng-template>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type="text" #firstName="ngModel" [(ngModel)]="regis.firstName" name="firstName" class="form-control"
+                required placeholder="First Name">
+              <span *ngIf="firstName.errors && (firstName.touched || firstName.dirty)" style="color:red">
+                <span [hidden]="!firstName.errors.required">First name Required </span>
+              </span>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type="text" #lastName="ngModel" [(ngModel)]="regis.lastName" name="lastName" class="form-control"
+                required placeholder="Last Name">
+              <span *ngIf="lastName.errors && (lastName.touched || lastName.dirty)" style="color:red">
+                <span [hidden]="!lastName.errors.required">Last Name Required ..</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type="text" #emailId="ngModel" [(ngModel)]="regis.emailId" name="emailId" class="form-control"
+                required pattern="^[A-Za-z0-9.]{4,25}@[A-Za-z]{3,7}.[A-Za-z]{2,4}$" placeholder="Email">
+              <span *ngIf="emailId.errors && (emailId.touched || emailId.dirty)" style="color:red">
+                <span [hidden]="!emailId.errors.required">Mailid Required ..</span>
+                <span [hidden]="!emailId.errors.pattern">please enter valid emailId ..</span>
+              </span>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type="text" #mobileNo="ngModel" [(ngModel)]="regis.mobileNo" name="mobileNo" class="form-control"
+                required pattern="^[6-9]{1}[0-9]{9}$" placeholder="Mobile">
+              <span *ngIf="mobileNo.errors && (mobileNo.touched || mobileNo.dirty)" style="color:red">
+                <span [hidden]="!mobileNo.errors.required">mobile Required ..</span>
+                <span [hidden]="!mobileNo.errors.pattern">Min 10 Digits ..</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type="text" #password="ngModel" [(ngModel)]="regis.password" name="password" class="form-control"
+                required placeholder="Password">
+              <span *ngIf="password.errors && (password.touched || password.dirty)" style="color:red">
+                <span [hidden]="!password.errors.required">Password Required ..</span>
+              </span>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type="text" #cpwd="ngModel" name="cpwd" [(ngModel)]="regis.cpwd" class="form-control" required
+                placeholder="Confirm Password">
+              <span *ngIf="password.value!=cpwd.value && cpwd.touched" style="color:red">
+                <span [hidden]="password.value==cpwd.value"> Password Mismatch </span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type="radio" #gender="ngModel" [(ngModel)]="regis.gender" name="gender" value="male" required>Male&nbsp;
+              <input type="radio" #gender="ngModel" [(ngModel)]="regis.gender" name="gender" value="female" required>Female&nbsp;
+              <input type="radio" #gender="ngModel" [(ngModel)]="regis.gender" name="gender" value="other" required>Other&nbsp;
+              <span *ngIf="gender.errors && (gender.touched || gender.dirty)" style="color:red">
+                <span [hidden]="!gender.errors.required">Gender Required ..</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div align="right">
+          <button mat-button matStepperNext class="btn btn-outline-info btn-sm">Next</button>
+        </div>
+
+
+      </mat-step>
+
+      <mat-step [stepControl]="secondFormGroup" optional>
+        <ng-template matStepLabel>Address.</ng-template>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6 row-5">
+            <div class="form-group">
+              <textarea class="form-control" rows="3" #address="ngModel" [(ngModel)]="regis.address" name="address"
+                class="form-control" required placeholder="Address Line1"></textarea>
+              <span *ngIf="address.errors && (address.touched || address.dirty)" style="color:red">
+                <span [hidden]="!address.errors.required">Address Required ..</span>
+              </span>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6 row-5">
+            <div class="form-group">
+              <textarea class="form-control" rows="3" id="comment" placeholder="Address Line2"></textarea>
+              <span *ngIf="address.errors && (address.touched || address.dirty)" style="color:red">
+                <span [hidden]="!address.errors.required">Address Required ..</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <select class="form-control" required #country="ngModel" [(ngModel)]="regis.country" (change)="getStates(country.value)"
+                name="country">
+                <option>Select</option>
+                <option *ngFor="let ucl of co" value="{{ucl.id}}">{{ucl.name}}</option>
+              </select>
+              <span *ngIf="country.errors&&(country.touched||country.dirty)" style="color: red">
+                <span [hidden]=!errors.country.required>Enter Country...</span>
+              </span>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <select class="form-control" required #state="ngModel" [(ngModel)]="regis.state" (change)="getCity(state.value)"
+                name="state">
+                <option>Select</option>
+                <option *ngFor="let ucl of s" value="{{ucl.id}}">{{ucl.nme}} </option>
+              </select>
+              <span *ngIf="state.errors&&(state.touched||state.dirty)" style="color: red">
+                <span [hidden]=!errors.state.required>Enter State...</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <select class="form-control" required #city="ngModel" [(ngModel)]="regis.city" name="city">
+                <option>Select</option>
+                <option *ngFor="let ucl of c" value="{{ucl.id}}">{{ucl.city}}</option>
+              </select>
+              <span *ngIf="city.errors&&(city.touched||city.dirty)" style="color: red">
+                <span [hidden]=!errors.city.required>Enter City...</span>
+              </span>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type="text" #zipCode="ngModel" [(ngModel)]="regis.zipCode" name="zipCode" class="form-control"
+                required placeholder="Postal / Zip-Code">
+              <span *ngIf="zipCode.errors && (zipCode.touched || zipCode.dirty)" style="color:red">
+                <span [hidden]="!zipCode.errors.required">Zip Code Required </span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div align="right">
+          <button mat-button matStepperPrevious class="btn btn-outline-info btn-sm">Back</button>
+          <button mat-button matStepperNext class="btn btn-outline-info btn-sm">Next</button>
+        </div>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <h3 style="color:seagreen;">You are now done. </h3>
+        <div align="right">
+          <button mat-button matStepperPrevious class="btn btn-outline-info btn-sm">Back</button>
+          <button mat-button (click)="stepper.reset()" class="btn btn-outline-danger btn-sm">Reset</button>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+    <div class="row">
+      <div class="col-xs-12 col-md-12">
+        <input type="submit" [disabled]="!regFrm.valid" (click)="btnuser(regFrm)" value="Register" class="btn btn-primary btn-block" tabindex="7">
+      </div>
+      <!-- <div class="col-xs-12 col-md-6">
+        <a class="btn btn-success btn-block" (click)="btnuser(regFrm)">Sign In</a>
+      </div> -->
+    </div>
+  </form>
+</div>
+
+<!-- <div align="center">
+  <button type="button" class="btn btn-sm btn-fb"><i class="fa fa-facebook pr-1"></i> Facebook</button>
+  <button type="button" class="btn btn-tw"><i class="fa fa-twitter pr-1"></i> Twitter</button><br>
+  <button type="button" class="btn btn-gplus"><i class="fa fa-google-plus pr-1"></i> Google +</button>
+  <button type="button" class="btn btn-git"><i class="fa fa-github pr-1"></i> Github</button>
+
+</div> -->

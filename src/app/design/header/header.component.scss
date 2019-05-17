@@ -1,0 +1,41 @@
+$topnav-background-color: rgba(41,95,145,0.897);
+:host {
+    .navbar {
+        border-bottom: #ddd;
+        background-color: rgba(41,95,145,0.897);
+        .navbar-brand {
+            color: #fff;
+            margin-left: 60px;
+            margin-right: 70px;
+        }
+        .nav-item > a {
+            color: gainsboro;
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+    .messages {
+        width: 300px;
+        .media {
+            border-bottom: 1px solid #ddd;
+            padding: 5px 10px;
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+        .media-body {
+            h5 {
+                font-size: 13px;
+                font-weight: 600;
+            }
+            .small {
+                margin: 0;
+            }
+            .last {
+                font-size: 12px;
+                margin: 0;
+            }
+        }
+    }
+}

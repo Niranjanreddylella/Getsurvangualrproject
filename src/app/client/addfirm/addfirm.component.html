@@ -1,0 +1,141 @@
+<div class="container-fluid">
+<div role="tabpanel" class="tab-pane" id="profile" style="margin-left:10px;"> 
+  <div class="row">
+    <!-- <div class="col-sm-6 mobile-pull"> -->
+      <article role="login">
+        <h3 class="text-center"> 
+          Enter Firm Details</h3>
+        <form class="signup" #myfrm1="ngForm" action="index.html" method="post">
+         <div class="row">
+            <div class="col-md-6">
+            <div class="form-group">
+              Firm Name <input type="text" #firmName="ngModel" [(ngModel)]="regis.firmName" name="firmName" class="form-control"
+                required>
+              <span *ngIf="firmName.errors && (firmName.touched || firmName.dirty)" style="color:red">
+                <span [hidden]="!firmName.errors.required">First name Required </span>
+              </span> </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              established year <input type="date" #establishedYear="ngModel" [(ngModel)]="regis.establishedYear" name="establishedYear"
+                class="form-control" required>
+              <span *ngIf="establishedYear.errors && (establishedYear.touched || establishedYear.dirty)" style="color:red">
+                <span [hidden]="!establishedYear.errors.required">Established Year Required ..</span>
+              </span>
+            </div>
+          </div>
+        </div>
+          
+          <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              description <input type="text" #description="ngModel" [(ngModel)]="regis.description" name="description"
+                class="form-control" required>
+              <span *ngIf="description.errors && (description.touched || description.dirty)" style="color:red">
+                <span [hidden]="!description.errors.required">description Required ..</span>
+                <span [hidden]="!description.errors.pattern">please enter description ..</span>
+              </span> </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              category <select class="form-control" required #category="ngModel" [(ngModel)]="regis.category" (change)="getCity(category.value)"
+                name="category">
+                <option>Select</option>
+                <option *ngFor="let ucl of cat" value="{{ucl.categoryid}}">{{ucl.categoryname}} </option>
+              </select>
+              <span *ngIf="category.errors && (category.touched || category.dirty)" style="color: red">
+                <span [hidden]="!category.errors.required">Enter category...</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              parent firm <input type="text" #parentFirm="ngModel" [(ngModel)]="regis.parentFirm" name="parentFirm"
+                class="form-control" required>
+              <span *ngIf="parentFirm.errors && (parentFirm.touched || parentFirm.dirty)" style="color:red">
+                <span [hidden]="!parentFirm.errors.required">parent firm name Required </span>
+              </span> </div>
+          </div>
+          <div class="col-md-6">
+            
+            <div class="form-group">Country 
+              <select class="form-control" required #fcountry="ngModel" [(ngModel)]="regis.fcountry" (change)="getStates(fcountry.value)"
+                name="fcountry">
+                <option>Select</option>
+                <option *ngFor="let ucl of co" value="{{ucl.id}}">{{ucl.name}}</option>
+              </select>
+              <span *ngIf="fcountry.errors&&(fcountry.touched||fcountry.dirty)" style="color: red">
+                <span [hidden]=!errors.fcountry.required>Enter Country...</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              State <select class="form-control" required #fstate="ngModel" [(ngModel)]="regis.fstate" (change)="getCity(fstate.value)"
+                name="fstate">
+                <option>Select</option>
+                <option *ngFor="let ucl of s" value="{{ucl.id}}">{{ucl.nme}} </option>
+              </select>
+              <span *ngIf="fstate.errors&&(fstate.touched||fstate.dirty)" style="color: red">
+                <span [hidden]=!errors.fstate.required>Enter State...</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            City <div class="form-group">
+              <select class="form-control" required #fcity="ngModel" [(ngModel)]="regis.fcity" name="fcity">
+                <option>Select</option>
+                <option *ngFor="let ucl of c" value="{{ucl.id}}">{{ucl.city}}</option>
+              </select>
+              <span *ngIf="fcity.errors&&(fcity.touched||fcity.dirty)" style="color: red">
+                <span [hidden]=!errors.fcity.required>Enter City...</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            address <div class="form-group">
+              <input type="text" #faddress="ngModel" [(ngModel)]="regis.faddress" name="faddress" class="form-control"
+                required>
+              <span *ngIf="faddress.errors && (faddress.touched || faddress.dirty)" style="color:red">
+                <span [hidden]="!faddress.errors.required">Address Required ..</span>
+              </span> </div>
+          </div>
+          
+            <div class="col-md-6">
+              <div class="form-group">
+                ZipCode
+                <input type="text" #fzipCode="ngModel" [(ngModel)]="regis.fzipCode" name="fzipCode" class="form-control"
+                  required>
+                <span *ngIf="fzipCode.errors && (fzipCode.touched || fzipCode.dirty)" style="color:red">
+                  <span [hidden]="!fzipCode.errors.required">Zip Code Required </span>
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="checkbox">
+            </div>
+          </div>
+        </form>
+
+   
+        <div class="text-center">
+          <button  (click)="btnAddFirm(myfrm1)" class="btn btn-info">Add New Firm Details
+            </button>
+        </div>
+        <br>
+
+      
+      </article>
+    <!-- </div> -->
+  </div>
+</div>
+</div>

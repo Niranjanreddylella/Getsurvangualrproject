@@ -1,0 +1,87 @@
+<!-- <body>
+  <div class="sidenav">
+    <ul class="nav flex-column">
+      
+      
+      <div *ngIf="us">
+        <app-userprofile [pck]></app-userprofile>
+        </div>
+        <div *ngIf="cl">
+          <app-clientprofile [pck]></app-clientprofile>
+          
+          </div>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="!us && !cl && !ad" routerLink="home">Home</a>
+      </li>
+      <br>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="ad" routerLink="ahome">Home</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" *ngIf="us" routerLink="uhome">Home</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" *ngIf="cl" routerLink="chome">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="!ad" routerLink="aboutus">Aboutus</a>
+      </li>
+      <br>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="!ad" routerLink="contactus">Contactus</a>
+      </li>
+      <br>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="ad" routerLink="questions">Add Questions</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="cl || us" routerLink="feedback">Feedback</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="ad" routerLink="packages">View Packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="ad" routerLink="offers">Offers</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" *ngIf="cl" routerLink="survey">Create my Survey</a>
+      </li>
+      <li class="nav-item " *ngIf="!us && !cl && !ad">
+        <a class="nav-link" routerLink="login">
+          <font color="red"></font>Login
+        </a>
+      </li>
+      <br>
+      <li class="nav-item" *ngIf="!us && !cl && !ad">
+        <a class="nav-link" routerLink="register">Registration</a>
+        <br>
+      </li>
+      <li class="nav-item" *ngIf="us || cl || ad">
+        <a class="nav-link" [routerLink]="['login']" (click)="btnlogout()">Log Out</a>
+      </li> <br>
+      
+    </ul>
+    <ul class="nav " >.+
+
+      
+      <a class="navbar-brand" >
+        <img src="assets/img/cccc.gif" alt="logo" style="width:70px;">
+      </a>
+    </ul>
+
+  </div>
+
+  <div class="main">
+    
+  </div>
+</body> -->
+
+
+<app-header [userDet]="userDetails"></app-header>
+<app-sidebar (collapsedEvent)="receiveCollapsed($event)"></app-sidebar>
+<body>
+  
+  <div class="main-container" [ngClass]="{collapsed: collapedSideBar}">
+    <router-outlet></router-outlet>
+  </div>
+</body>

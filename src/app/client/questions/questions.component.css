@@ -1,0 +1,23 @@
+.symbol{
+    color:green
+}
+.mod{
+    /* opacity: 0.3; */
+    /* filter: alpha(opacity=30); */
+    /* background: rgba(76, 175, 80, 0.3)  */
+    display:inline-block;
+}
+.column {
+    float: left;
+    width: 1000px;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+}
+.in{
+    width: 600px;
+    height: 40px;
+    margin-top: 15px;
+}
+input{
+    height: 100px;
+}

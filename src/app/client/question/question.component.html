@@ -1,0 +1,55 @@
+<form #myfrm="ngForm">
+  <div class="form-group" *ngIf="qtype">
+    Questions : {{qtype.modeltype}}
+    <br>
+    <textarea class="form-control" name="ques" [(ngModel)]="srQuestion.question" rows="2" #ques="ngModel"></textarea>
+    <br>
+    <div *ngIf="qtype.modelid=='8' || qtype.modelid=='9' || qtype.modelid=='7' ">
+      <div #opt1>
+        <input class="col-sm-9" style="height: 40px; margin-top: 15px" type="text" #txtopt1="ngModel" [(ngModel)]="srQuestion.option1" name="txtopt1" />
+        <mat-icon (click)="btnDelOpt(opt1,txtopt1)">delete_forever</mat-icon>
+      </div>
+      <div #opt2>
+        <input class="col-sm-9" style="height: 40px; margin-top: 15px" type="text" [(ngModel)]="srQuestion.option2" #txtopt2="ngModel" name="txtopt2">
+        <mat-icon (click)="btnDelOpt(opt2,txtopt2)">delete_forever</mat-icon>
+      </div>
+      <div #opt3>
+        <input class="col-sm-9" style="height: 40px; margin-top: 15px" type="text" [(ngModel)]="srQuestion.option3" #txtopt3="ngModel" name="txtopt3">
+        <mat-icon (click)="btnDelOpt(opt3,txtopt3)">delete_forever</mat-icon>
+      </div>
+      <div *ngIf="optionCount>=4" #opt4>
+        <input class="col-sm-9" style="height: 40px; margin-top: 15px" type="text" [(ngModel)]="srQuestion.option4" #txtopt4="ngModel" name="txtopt4">
+        <mat-icon (click)="btnDelOpt(opt4,txtopt4)">delete_forever</mat-icon>
+      </div>
+      <div *ngIf="optionCount>=5" #opt5>
+        <input class="col-sm-9" style="height: 40px; margin-top: 15px" type="text" [(ngModel)]="srQuestion.option5" #txtopt5="ngModel" name="txtopt5">
+        <mat-icon (click)="btnDelOpt(opt5,txtopt5)">delete_forever</mat-icon>
+      </div>
+      <div *ngIf="optionCount>=6" #opt6>
+        <input class="col-sm-9" style="height: 40px; margin-top: 15px" type="text" [(ngModel)]="srQuestion.option6" #txtopt6="ngModel" name="txtopt6">
+        <mat-icon (click)="btnDelOpt(opt6,txtopt6)">delete_forever</mat-icon>
+      </div>
+      <!-- <div *ngIf="a>=7" #opt7>
+          <input class="in" type="text" ngModel #txtopt7="ngModel" name="txtopt7">
+          <mat-icon (click)="btnDelOpt(opt7,txtopt7)">delete_forever</mat-icon>
+        </div>
+        <div *ngIf="a>=8" #opt8>
+          <input class="in" type="text" ngModel #txtopt8="ngModel" name="txtopt8">
+          <mat-icon (click)="btnDelOpt(opt8,txtopt8)">delete_forever</mat-icon>
+        </div> -->
+      <!-- <div *ngIf="a>=9" #opt9>
+          <input class="in" type="text" ngModel #txtopt9="ngModel" name="txtopt9">
+          <mat-icon (click)="btnDelOpt(opt9,txtopt9)">delete_forever</mat-icon>
+        </div> -->
+      <button (click)="btnInc()">+</button>
+    </div>
+    <div align="center">
+      <div class="row">
+        <div class="col">
+          <button type="button" class="btn btn-primary" (click)="btnAddQuestion(myfrm)">Submit Question </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</form> 

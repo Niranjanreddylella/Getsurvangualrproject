@@ -1,0 +1,30 @@
+<br>
+<div class="container">
+  <form #myFrm="ngForm">
+  <div *ngFor="let qd of quesData ">
+ 
+    <div *ngIf="qd.modelid==12">
+      <app-multi [ansTemp]="qd" (countChanged)="MultipleChoice($event)"></app-multi>
+    </div>
+    <div *ngIf="qd.modelid==16">
+      <app-multi-select [ansTemp]="qd" (countChanged)="multiSelects($event)"></app-multi-select>
+    </div>
+    <div *ngIf="qd.modelid==13">
+      <app-dropdown [ansTemp]="qd" (countChanged)="DropDown($event)"></app-dropdown>
+    </div>
+    <div *ngIf="qd.modelid==17">
+      <app-rating [ansTemp]="qd" (countChanged)="Ranking($event)" ></app-rating>
+    </div>
+    <div *ngIf="qd.modelid==15">
+      <app-textfield [ansTemp]="qd" (countChanged)="TextField($event)"></app-textfield>
+    </div>
+    <div *ngIf="qd.modelid==14">
+      <app-yes-no [ansTemp]="qd" (countChanged)="YesNO($event)"></app-yes-no>
+    </div>
+  </div>
+  <div align='center'>
+    <input type ='button' class="btn btn-primary" value='Submit Survey' (click)="submitSurvey()">
+  </div>
+</form>
+</div>
+

@@ -1,0 +1,186 @@
+<div class="row" align="center">
+  <div class="container-fluid">
+    <div class="details" *ngIf="!username">
+      <div class="card mx-4">
+        <div class="card-body p-4">
+          <form #myfrm="ngForm">
+            <div align="center">
+              <img src="{{su.image}}" width="100px" height="100px">
+            </div>
+            <br>
+            <ul>  
+              <li>Name : {{su.surveyname | uppercase}}</li>
+              <li>Status :{{su.status}}</li>
+              <li>Rewards:{{su.reward}}</li>
+            </ul>
+            <div>
+              <button (click)="customSurvey()">Customise My Survey</button>
+              <button (click)="preDefinedSurvey()">Predefined Questionary</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="column" *ngIf="custom==true">
+      <div class="card mx-4" style="background-color: rgba(12, 59, 39, 0.5);">
+        <div class="card-body p-4">
+          <form #myfrm="ngForm">
+            <select name="select" #select align="center" (change)="btnChange(select.value)" class="form-control">
+              <option>Select Question Type</option>
+              <option *ngFor="let q of questionModel" value="{{q.modelid}}">{{q.modeltype}}</option>
+            </select>
+            <div class="form-group">
+              Question 1 :
+              <input type="text" #ques name="ques" class="form-control">
+              <br>
+              <div *ngIf="multi==true">
+                <div>
+                  1
+                  <input type="text" #opt1="ngModel" [(ngModel)]="opt.opt1" name="opt1">
+                </div>
+                <div *ngIf="a>=2">
+                  2
+                  <input type="text" #opt2="ngModel" [(ngModel)]="opt.opt2" name="opt2">
+                </div>
+                <div *ngIf="a>=3">
+                  3
+                  <input type="text" #opt3="ngModel" [(ngModel)]="opt.opt3" name="opt3">
+                </div>
+                <div *ngIf="a>=4">
+                  4
+                  <input type="text" #opt4="ngModel" [(ngModel)]="opt.opt4" name="opt4">
+                </div>
+                <div *ngIf="a>=5">
+                  5
+                  <input type="text" #opt5="ngModel" [(ngModel)]="opt.opt5" name="opt5">
+                </div>
+                <div *ngIf="a>=6">
+                  6
+                  <input type="text" #opt6="ngModel" [(ngModel)]="opt.opt6" name="opt6">
+                </div>
+                <div *ngIf="a>=7">
+                  7
+                  <input type="text" #opt7="ngModel" [(ngModel)]="opt.opt7" name="opt7">
+                </div>
+                <div *ngIf="a>=8">
+                  8
+                  <input type="text" #opt8="ngModel" [(ngModel)]="opt.opt8" name="opt8">
+                </div>
+                <div *ngIf="a>=9">
+                  9
+                  <input type="text" #opt9="ngModel" [(ngModel)]="opt.opt9" name="opt9">
+                </div>
+                <button (click)="btnInc()">+</button>
+              </div>
+            </div>
+            <div align="center">
+              <div class="row">
+                <div class="col">
+                  <button type="button" class="btn btn-light " (click)="btnAddQuestion(ques.value)">DONE</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="count" *ngIf="!username">
+      <div class="card mx-4">
+        <div class="card-body p-4">
+          <form #myfrm="ngForm">
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 1}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 2}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 3}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 4}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 5}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 6}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 7}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 8}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 9}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 10}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 11}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 12}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 13}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 14}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 15}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 16}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 17}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 18}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 19}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 20}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 21}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 22}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 23}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 24}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 25}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 26}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 27}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 28}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 29}">favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled>
+              <mat-icon [ngClass]="{symbol:count >= 30}">favorite</mat-icon>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

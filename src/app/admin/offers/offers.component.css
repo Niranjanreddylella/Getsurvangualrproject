@@ -1,0 +1,29 @@
+.slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  } */
+  .example-h2 {
+    margin: 10px;
+  }
+  
+  .example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+  }
+  
+  .example-margin {
+    margin: 10px;
+  }
+  table {
+    width: 100%;
+  }
+  /* .container{
+    background-image: url(../../../assets/11111.png);
+    background-size: cover;
+
+  }  */

@@ -1,0 +1,65 @@
+.ranking {
+    display: inline-block;
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+  }
+  
+  .ranking label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    cursor: pointer;
+  }
+  
+  .ranking label:last-child {
+    position: static;
+  }
+  
+  .ranking label:nth-child(1) {
+    z-index: 5;
+  }
+  
+  .ranking label:nth-child(2) {
+    z-index: 4;
+  }
+  
+  .ranking label:nth-child(3) {
+    z-index: 3;
+  }
+  
+  .ranking label:nth-child(4) {
+    z-index: 2;
+  }
+  
+  .ranking label:nth-child(5) {
+    z-index: 1;
+  }
+  
+  .ranking label input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+  
+  .ranking label .icon {
+    float: left;
+    color: transparent;
+  }
+  
+  .ranking label:last-child .icon {
+    color: #000;
+  }
+  
+  .ranking:not(:hover) label input:checked ~ .icon,
+  .ranking label:hover input ~ .icon {
+    color: rgb(253, 125, 86);
+  }
+  
+  .ranking label input:focus:not(:checked) ~ .icon:last-child {
+    color: #000;
+    text-shadow: 0 0 5px #09f;
+  }

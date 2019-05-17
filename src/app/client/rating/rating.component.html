@@ -1,0 +1,99 @@
+<br>
+<br>
+<div class="container">
+  
+      <form #myfrm="ngForm">
+        <div >
+          <b>{{ansTemp.question}}</b>
+          <!-- <option *ngFor="let q of questions" value="{{qstn.question}}">{{ansTemp.question}}</option>  -->
+          <!-- <input type="text" placeholder="Question.........." #qstn="ngModel" [(ngModel)]="qstn.question" name="question"
+              class="form-control"> -->
+        </div>
+        <div class="ranking">
+          <label>
+            <input type="radio" value="1" #ranking1 name="ranking1" (click)="btnclick(ranking1.value,ansTemp.questionid)" />
+            <span class="icon">★</span>
+          </label>
+          <label>
+            <input type="radio" value="2" #ranking2 name="ranking2" (click)="btnclick(ranking2.value,ansTemp.questionid)" />
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+          </label>
+          <label>
+            <input type="radio" value="3" #ranking3 name="ranking3" (click)="btnclick(ranking3.value,ansTemp.questionid)" />
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+          </label>
+          <label>
+            <input type="radio" value="4" #ranking4 name="ranking4" (click)="btnclick(ranking4.value,ansTemp.questionid)" />
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+          </label>
+          <label>
+            <input type="radio" value="5" #ranking5 name="ranking5" (click)="btnclick(ranking5.value,ansTemp.questionid)" />
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+          </label>
+        </div>
+      </form>
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
+<div class="container">
+
+  <form #myFrm="ngForm">
+    <div>
+   <b> {{ansTemp.question}}  </b>
+  </div>
+    <div class="ranking">
+      <label>
+        <input type="radio" value="1" #ranking1="ngModel" [(ngModel)]="ansTemp.ranking1" (click)="btnclick(ranking1.value)" name="ranking" />
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input type="radio" value="2" #ranking2="ngModel" [(ngModel)]="ansTemp.ranking2" (click)="btnclick(ranking2.value)" name="ranking" />
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input type="radio" value="3" #ranking3="ngModel" [(ngModel)]="ansTemp.ranking3" (click)="btnclick(ranking3.value)" name="ranking" />
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input type="radio" value="4" #ranking4="ngModel" [(ngModel)]="ansTemp.ranking4" (click)="btnclick(ranking4.value)" name="ranking" />
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input type="radio" value="5" #ranking5="ngModel" [(ngModel)]="ansTemp.ranking5" (click)="btnclick(ranking5.value)" name="ranking" />
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+    </div>
+  </form>
+</div>  -->

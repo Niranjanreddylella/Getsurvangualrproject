@@ -1,0 +1,12 @@
+<div class="container">
+  {{ansTemp.question}}
+  <br>
+  <form #myFrm="ngForm">
+  <div *ngFor="let od of ansTemp.optiondescription; let i = index; let odd = odd">
+    <div>
+      {{i+1}}. <input type="radio" value="{{od.f1}}" name="{{ansTemp.questionid}}"  #ans (change)="btnOption(ans.value,ansTemp.questionid)">
+      {{od.f1}}
+    </div>
+  </div>
+</form>
+</div>

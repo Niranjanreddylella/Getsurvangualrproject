@@ -1,0 +1,43 @@
+ img {
+    border-radius: 50%;  
+  } 
+  #pic{
+   display: none;
+     }
+     .newbtn{
+       cursor: context-menu
+    } 
+ .hvrbox,
+.hvrbox * {
+ box-sizing: border-box;
+}
+.hvrbox {
+ position: relative;
+ display: inline-block;
+}
+.hvrbox img {
+ max-width: 100%;
+} 
+.hvrbox .hvrbox-layer_top {
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ padding: 20px;
+} 
+.hvrbox:hover .hvrbox-layer_top,
+.hvrbox.active .hvrbox-layer_top {
+ opacity: 1;
+}
+.hvrbox-text {
+ text-align: center;
+ display: inline-block;
+ position: absolute;
+ bottom:5%;
+ left:42%;
+ cursor: pointer;
+}
+i{
+  color:white;
+}

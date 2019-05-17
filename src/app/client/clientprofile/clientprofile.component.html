@@ -1,0 +1,16 @@
+<div class="hvrbox" align="center">
+  <label class="newbtn">
+<img class="rounded-circle" src="http://localhost:4500/{{details.userId}}.png" alt="Mountains"style="height:200px; width:300px">
+<input id="pic" type="file" name="image" [(ngModel)]="imag.image" #image="ngModel" (change)="img($event)">
+<div class="hvrbox-layer_top">
+  <div class="hvrbox-text"> <p> <b>change photo</b></p> </div>
+</div>
+</label>
+</div>
+<div align="center">
+  <h4 >
+    <font color="white">{{details.firstName}} &nbsp;{{details.lastName}}</font>
+  </h4>
+  <button type="button" class="btn btn-info" (click)='getProfile(details.emailid)'>Go To Profile</button>
+</div>
+

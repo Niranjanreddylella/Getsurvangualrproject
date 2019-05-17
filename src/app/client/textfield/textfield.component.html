@@ -1,0 +1,32 @@
+<div class="container">
+  {{ansTemp.question}}
+  <br>
+  <form>
+    <div class="glowBox">
+    </div>
+  </form>
+  <div class="signUp">
+    <span>
+      <input type="text" class="form" placeholder="write your question" autocomplete="off"
+       style="cursor: auto;" #ans (keyup)='btnText(ans.value,ansTemp.questionid)'>
+      <span class="underline"></span>
+    </span>
+  </div>
+</div>
+
+
+<!-- <div class="container">
+  {{ansTemp.question}}
+  <br>
+  <form>
+    <div class="glowBox">
+    </div>
+  </form>
+  <div class="signUp">
+    <span>
+      <input type="text" class="form" placeholder="write your question" autocomplete="off" style="cursor: auto;">
+      <span class="underline"></span>
+    </span>
+  </div>
+
+</div> -->

@@ -1,0 +1,390 @@
+<div class="container main-secction">
+  <div class="row">
+
+    <div class="row user-left-part">
+      <div class="col-md-3 col-sm-3 col-xs-12 user-profil-part pull-left">
+        <div class="row ">
+          <div style="margin-top: 100px" class="col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center">
+            <app-userprofile></app-userprofile>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section">
+        <div class="row profile-right-section-row">
+          <div class="col-md-12 profile-header">
+            <div class="row">
+              <div class="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left">
+                <h1>{{details.firstName | uppercase}} {{details.lastName | uppercase}}</h1>
+
+              </div>
+
+            </div>
+          </div>
+          <br>
+          <br>
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-10">
+                <ul class="nav nav-tabs" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#profile" role="tab" data-toggle="tab">
+                      Profile </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#fdetails" role="tab" data-toggle="tab">
+                      Organisation Details</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#cpass" role="tab" data-toggle="tab">
+                      Change Password</a>
+                  </li>
+                </ul>
+                <br>
+                <div class="tab-content">
+
+                  <div role="tabpanel" class="tab-pane fade show active" id="profile">
+                    <form #myFrm="ngForm">
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label>
+                            <b>User Id</b>
+                          </label>
+                        </div>
+                        <div class="col-md-5">
+                          <p>{{details.userId}}</p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label>
+                            <b>Name</b>
+                          </label>
+                        </div>
+                        <div class="col-md-5">
+                          <p> {{details.firstName}} {{details.lastName}}</p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label>
+                            <b>Gender</b>
+                          </label>
+                        </div>
+                        <div class="col-md-5">
+                          <p>{{details.gender}}</p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label>
+                            <b>Email</b>
+                          </label>
+                        </div>
+                        <div *ngIf="!edit" class="col-md-5">
+                          <p>{{details.emailId}}</p>
+                        </div>
+                        <div *ngIf="edit" class="col-md-5">
+                          <mat-form-field class="example-full-width">
+                            <input matInput #emailId="ngModel" [(ngModel)]="details.emailId" name="emailId">
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label>
+                            <b>Phone</b>
+                          </label>
+                        </div>
+                        <div *ngIf="!edit" class="col-md-5">
+                          <p>{{details.mobileNo}}</p>
+                        </div>
+                        <div *ngIf="edit" class="col-md-5">
+                          <mat-form-field class="example-full-width">
+                            <input matInput #mobileNo="ngModel" [(ngModel)]="details.mobileNo" name="mobileNo">
+                          </mat-form-field>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label>
+                            <b>Address</b>
+                          </label>
+                        </div>
+                        <div *ngIf="!edit" class="col-md-5">
+                          <p> {{details.address}}</p>
+                        </div>
+                        <div *ngIf="edit" class="col-md-5">
+                          <mat-form-field class="example-full-width">
+                            <input matInput #address="ngModel" [(ngModel)]="details.address" name="address">
+                          </mat-form-field>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label>
+                            <b>Country</b>
+                          </label>
+                        </div>
+                        <div *ngIf="!edit" class="col-md-5">
+                          <p>{{name.country}}</p>
+                        </div>
+                        <div *ngIf="edit" class="col-md-5">
+                          <mat-form-field class="example-full-width">
+                            <mat-select placeholder="{{name.country}}" #country="ngModel" [(ngModel)]="name.country" name="country">
+                              <mat-option *ngFor="let ucl of co" value="{{ucl.id}}" (click)="getStates(country.value)">
+                                {{ucl.name}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label>
+                            <b>State</b>
+                          </label>
+                        </div>
+                        <div *ngIf="!edit" class="col-md-5">
+                          <p>{{name.state}}</p>
+                        </div>
+                        <div *ngIf="edit" class="col-md-5">
+                          <mat-form-field class="example-full-width">
+                            <mat-select placeholder="{{name.state}}" #state="ngModel" [(ngModel)]="name.state" name="state">
+                              <mat-option *ngFor="let ucl of s" value="{{ucl.id}}" (click)="getCity(state.value)">
+                                {{ucl.nme}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label>
+                            <b>City</b>
+                          </label>
+                        </div>
+                        <div *ngIf="!edit" class="col-md-5">
+                          <p>{{name.city}}</p>
+                        </div>
+                        <div *ngIf="edit" class="col-md-5">
+                          <mat-form-field class="example-full-width">
+                            <mat-select placeholder="{{name.city}}" #city="ngModel" [(ngModel)]="name.city" name="city">
+                              <mat-option *ngFor="let ucl of c" value="{{ucl.id}}">
+                                {{ucl.city}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label>
+                            <b>Zipcode</b>
+                          </label>
+                        </div>
+                        <div *ngIf="!edit" class="col-md-5">
+                          <p>{{details.zipCode}}</p>
+                        </div>
+                        <div *ngIf="edit" class="col-md-5">
+                          <mat-form-field class="example-full-width">
+                            <input matInput #zipCode="ngModel" [(ngModel)]="details.zipCode" name="zipCode">
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label>
+                            <b>Type Of User</b>
+                          </label>
+                        </div>
+                        <div class="col-md-5">
+                          <p>{{details.typeOfUser}}</p>
+                        </div>
+                      </div>
+                    </form>
+                    <div style="margin-left: 150px" class="col-md-5">
+                      <button *ngIf="!edit || !save" (click)="editProfile()">EDIT</button>
+                      <button *ngIf="edit || save" (click)="updateProfile(myFrm)">SAVE</button>
+                    </div>
+                  </div>
+                  <div role="tabpanel" class="tab-pane fade" id="fdetails">
+                    <form #myFrm1="ngForm">
+                      <div *ngFor="let det of details1 | orderBy: key : reverse  | paginate: { itemsPerPage: 1, currentPage: p };  ">
+                        <div class="row">
+                          <div class="col-md-5">
+                            <label>
+                              <b>Firm Name</b>
+                            </label>
+                          </div>
+                          <div *ngIf="!fedit" class="col-md-5">
+                            <p>
+                              <b>{{det.firmname|uppercase}}</b>
+                            </p>
+                          </div>
+                          <div *ngIf="fedit" class="col-md-5">
+                            <mat-form-field class="example-full-width">
+                              <input matInput #firmname="ngModel" [(ngModel)]="det.firmname" name="firmname">
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-5">
+                            <label>
+                              <b>Firm ID</b>
+                            </label>
+                          </div>
+                          <div class="col-md-5">
+                            <p>{{det.firmid}}</p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-5">
+                            <label>
+                              <b>Established Year</b>
+                            </label>
+                          </div>
+                          <div class="col-md-5">
+                            <p>{{det.establishedyear|date}}</p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-5">
+                            <label>
+                              <b>Description</b>
+                            </label>
+                          </div>
+                          <div *ngIf="!fedit" class="col-md-5">
+                            <p>{{det.description}}</p>
+                          </div>
+                          <div *ngIf="fedit" class="col-md-5">
+                            <mat-form-field class="example-full-width">
+                              <input matInput #description="ngModel" [(ngModel)]="det.description" name="description">
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-5">
+                            <label>
+                              <b>Parent Firm</b>
+                            </label>
+                          </div>
+                          <div *ngIf="!fedit" class="col-md-5">
+                            <p>{{det.parentfirm}}</p>
+                          </div>
+                          <div *ngIf="fedit" class="col-md-5">
+                            <mat-form-field class="example-full-width">
+                              <input matInput #parentfirm="ngModel" [(ngModel)]="det.parentfirm" name="parentfirm">
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-5">
+                            <label>
+                              <b>Address</b>
+                            </label>
+                          </div>
+                          <div *ngIf="!fedit" class="col-md-5">
+                            <p>{{det.address}}</p>
+                          </div>
+                          <div *ngIf="fedit" class="col-md-5">
+                            <mat-form-field class="example-full-width">
+                              <input matInput #address="ngModel" [(ngModel)]="det.address" name="address">
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-5">
+                            <label>
+                              <b>Country</b>
+                            </label>
+                          </div>
+                          <div *ngIf="!fedit" class="col-md-5">
+                            <p>{{det.country}}</p>
+                          </div>
+                          <div *ngIf="fedit" class="col-md-5">
+                            <mat-form-field class="example-full-width">
+                              <mat-select placeholder="{{det.country}}" #country="ngModel" [(ngModel)]="det.country" name="country">
+                                <mat-option *ngFor="let ucl of co" value="{{ucl.id}}" (click)="getStates(country.value)">
+                                  {{ucl.name}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-5">
+                            <label>
+                              <b>State</b>
+                            </label>
+                          </div>
+                          <div *ngIf="!fedit" class="col-md-5">
+                            <p>{{det.state}}</p>
+                          </div>
+                          <div *ngIf="fedit" class="col-md-5">
+                            <mat-form-field class="example-full-width">
+                              <mat-select placeholder="{{det.state}}" #state="ngModel" [(ngModel)]="det.state" name="state">
+                                <mat-option *ngFor="let ucl of s" value="{{ucl.id}}" (click)="getCity(state.value)">
+                                  {{ucl.nme}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-5">
+                            <label>
+                              <b>City</b>
+                            </label>
+                          </div>
+                          <div *ngIf="!fedit" class="col-md-5">
+                            <p>{{det.city}}</p>
+                          </div>
+                          <div *ngIf="fedit" class="col-md-5">
+                            <mat-form-field class="example-full-width">
+                              <mat-select placeholder="{{det.city}}" #city="ngModel" [(ngModel)]="det.city" name="city">
+                                <mat-option *ngFor="let ucl of c" value="{{ucl.id}}">
+                                  {{ucl.city}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-5">
+                            <label>
+                              <b>zipCode</b>
+                            </label>
+                          </div>
+                          <div *ngIf="!fedit" class="col-md-5">
+                            <p>{{det.zipcode}}</p>
+                          </div>
+                          <div *ngIf="fedit" class="col-md-5">
+                            <mat-form-field class="example-full-width">
+                              <input matInput #zipcode="ngModel" [(ngModel)]="det.zipcode" name="zipcode">
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div style="margin-left: 150px" class="col-md-5">
+                          <button *ngIf="!fedit || !fsave" (click)="editFirmDetails()">EDIT</button>
+                          <button *ngIf="fedit || fsave" (click)="updateFirm(myFrm1)">SAVE</button>
+                        </div>
+                        <hr />
+                      </div>
+                    </form>
+                    <pagination-controls (pageChange)="p = $event" maxSize="9"></pagination-controls>
+                  </div>
+                  <div role="tabpanel" style="margin-top: 20px" class="tab-pane fade" id="cpass">
+                    <app-changepassword></app-changepassword>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

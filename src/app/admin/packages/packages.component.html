@@ -1,0 +1,38 @@
+<br>
+<div class="container">
+  <div align="right">
+      <button (click)="btnadd()" class="btn btn-primary">Create Package</button>
+  </div> <br>
+  <table class="table table-striped">
+      <tr>
+        <th>Package id</th>
+        <th>Package Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Duration</th>
+        <th>Actions</th>
+      </tr>
+      <tr *ngFor="let a of pack">
+        <td>
+          {{a.pckid}}
+        </td>
+        <td>
+          {{a.pckname}}
+        </td>
+        <td>
+          {{a.pckdescription}}
+        </td>
+        <td>
+          {{a.pckprice}}
+        </td>
+        <td>
+          {{a.pckduration}}
+        </td>
+        <td>
+          <button class="btn btn-primary" (click)="btnedit(a.pckid)" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span>  edit</button>&nbsp;&nbsp;
+          <button (click)="btndel(a.pckid)" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span>  delete</button>
+        </td>
+    </tr>
+    </table>
+  </div>
+    
